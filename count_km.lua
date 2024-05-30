@@ -71,9 +71,11 @@ function onRender(dt)
         local km = getKilometers(driver_id)
         local display_text = string.format("Km percorsi: %.2f", km)
         
+        -- Ottieni la posizione dello schermo per il pilota
+        local x = 10
+        local y = 10 + driver_id * 20 -- Offset per evitare sovrapposizioni
+
         -- Disegna il testo in alto a sinistra
-        if driver.isConnected then
-            ac.drawText(10, 10, display_text, 20, ac.Color(1, 1, 1, 1), 0, 1)
-        end
+        ac.setText(x, y, display_text, 20, ac.Color(1, 1, 1, 1), 0, 1)
     end
 end
