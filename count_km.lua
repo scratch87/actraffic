@@ -63,3 +63,17 @@ function onServerStop()
         ac.log(string.format("Pilota %d: %.2f km", driver_id, data.total_km))
     end
 end
+
+-- Funzione per disegnare il testo a schermo
+function onRender(dt)
+    for _, driver in ipairs(ac.getDrivers()) do
+        local driver_id = driver.carId
+        local km = getKilometers(driver_id)
+        local display_text = string.format("Km percorsi: %.2f", km)
+        
+        -- Disegna il testo in alto a sinistra
+        if driver.isConnected then
+            ac.drawText(10, 10, display_text, 20, ac.Color(1, 1, 1, 1), 0, 1)
+        end
+    end
+end
